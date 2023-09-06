@@ -1,4 +1,4 @@
-from Barath import cli
+from PyroX import cli
 import asyncio
 
 collection = cli["Barath"]["pmpermit"]
