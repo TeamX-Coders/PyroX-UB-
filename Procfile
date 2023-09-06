@@ -1,1 +1,1 @@
-worker: python3 -m Barath
+worker: python3 -m PyroX
