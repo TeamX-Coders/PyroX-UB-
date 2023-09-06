@@ -1,24 +1,23 @@
 from pyrogram import filters
 import asyncio
 from pyrogram import client
-from Barath import barath
-from Barath.helpers.help_func import get_arg
-import Barath.barath_db.afk_db as Zect
-from Barath.helpers.help_func import user_afk
-from Barath import get_readable_time
-from Barath.helpers.utils import get_message_type, Types
-from config import HANDLER, OWNER_ID, LOG_CHAT
-from Barath.helpers.help_func import get_datetime 
+from PyroX import PyroX
+from PyroX.helpers.help_func import get_arg
+import PyroX.PyroX_db.afk_db as Zect
+from PyroX.helpers.help_func import user_afk
+from PyroX import get_readable_time
+from PyroX.helpers.utils import get_message_type, Types
+from config import HANDLER, LOG_CHAT
+from PyroX.helpers.help_func import get_datetime 
 import time
 
-LOG_CHAT = LOG_CHAT
 
 MENTIONED = []
 AFK_RESTIRECT = {}
 DELAY_TIME = 20
 
 
-@barath.on_message(filters.command("afk", HANDLER) & filters.me)
+@PyroX.on_message(filters.command("afk", HANDLER) & filters.me)
 async def afk(barath, message):
     afk_time = int(time.time())
     arg = get_arg(message)
@@ -30,7 +29,7 @@ async def afk(barath, message):
     await message.edit("**I'm goin' AFK**")
 
 
-@barath.on_message(filters.mentioned & ~filters.bot & filters.create(user_afk), group=11)
+@PyroX.on_message(filters.mentioned & ~filters.bot & filters.create(user_afk), group=11)
 async def afk_mentioned(_, message):
     global MENTIONED
     afk_time, reason = await Zect.afk_stuff()
@@ -68,7 +67,7 @@ async def afk_mentioned(_, message):
         )
 
 
-@barath.on_message(filters.create(user_afk) & filters.outgoing)
+@PyroX.on_message(filters.create(user_afk) & filters.outgoing)
 async def auto_unafk(_, message):
     await Zect.set_unafk()
     unafk_message = await barath.send_message(message.chat.id, "**I'm no longer AFK**")
@@ -85,7 +84,7 @@ async def auto_unafk(_, message):
             x["chat"],
             msg_text,
         )
-        await barath.send_message(LOG_CHAT, text)
+        await PyroX.send_message(LOG_CHAT, text)
         MENTIONED = []
     await asyncio.sleep(2)
     await unafk_message.delete()
