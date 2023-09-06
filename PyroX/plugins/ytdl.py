@@ -11,10 +11,10 @@ from yt_dlp import YoutubeDL
 from pyrogram import filters
 from pyrogram.types import *
 
-from Barath import barath, MODULE
-from config import HANDLER, OWNER_ID, BARATH
+from PyroX import PyroX, MODULE
+from config import HANDLER
 
-@barath.on_message(filters.command("video",prefixes=HANDLER) & filters.user(OWNER_ID))
+@PyroX.on_message(filters.command("video",prefixes=HANDLER) & filters.me)
 async def vsong(client, message):
     ydl_opts = {
         "format": "best",
@@ -74,7 +74,7 @@ ydl_opts = {
     "quite": True,
 }        
 
-@barath.on_message(filters.command("song",prefixes=HANDLER) & filters.user(OWNER_ID))
+@PyroX.on_message(filters.command("song",prefixes=HANDLER) & filters.me)
 def download_song(_, message):
     query = " ".join(message.command[1:])  
     print(query)
