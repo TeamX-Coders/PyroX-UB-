@@ -3,7 +3,7 @@ from time import sleep, time
 
 from pyrogram.types import Message
 
-from Barath import barath as app
+from PyroX import PyroX as app
 
 
 @unique
