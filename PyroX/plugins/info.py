@@ -1,5 +1,5 @@
 from pyrogram import filters
-
+from pyrogram.types import Message
 from config import HANDLER
 from PyroX import PyroX
 
@@ -18,15 +18,19 @@ no_reply_user = """ ╒═══「 Appraisal results:」
 """
 
 
-@PyroX.on_message(filters.command("info", prefixes=HANDLER) & filters.me)
-async def info(_, m):
-    m.reply_to_message
-    if len(m.command) < 2:
+@PyroX.on_message(filters.command("info", prefixes=HANDLER) & (filters.me | filters.reply), group=1)
+async def info(_, m: Message):
+    if m.reply_to_message:
+        user_id = m.reply_to_message.from_user.id
+    elif len(m.command) >= 2:
+        user_id = m.text.split(" ")[1]
+    else:
         await m.reply_text("ɢɪᴠᴇ ᴍᴇ ɪᴅ")
         return
-    id_user = m.text.split(" ")[1]
+    
     msg = await m.reply_text("ɪɴғᴏʀᴍᴀᴛɪᴏɴ ɢᴀᴛʜᴇʀɪɴɢ!")
-    info = await PyroX.get_chat(id_user)
+    info = await PyroX.get_chat(user_id)
+    
     if info.photo:
         file_id = info.photo.big_file_id
         photo = await PyroX.download_media(file_id)
