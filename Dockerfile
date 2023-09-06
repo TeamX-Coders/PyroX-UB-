@@ -1,6 +1,6 @@
 FROM python:3.10.0
 
-WORKDIR /root/Barath
+WORKDIR /root/PyroX
 
 COPY . .
 
@@ -14,4 +14,4 @@ RUN curl -sL https://deb.nodesource.com/setup_17.x | bash -
 
 RUN apt-get install -y nodejs
 
-CMD ["python3", "-m", "Barath"]
+CMD ["python3", "-m", "PyroX"]
