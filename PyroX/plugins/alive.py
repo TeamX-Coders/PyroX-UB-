@@ -1,10 +1,10 @@
 import time 
 import random 
 import asyncio
-from config import HANDLER, OWNER_ID, BARATH
+from config import HANDLER
 from pyrogram import filters, __version__ as pyrover, enums
-from Barath import barath, get_readable_time, StartTime
-from Barath import bot, MODULE
+from PyroX import PyroX, get_readable_time, StartTime
+from PyroX import bot, MODULE
 
 async def alive():
     katsuki = "3.01"
@@ -40,7 +40,7 @@ async def alive():
     return ALIVE_TEXT, photo_url
     
 
-@barath.on_message(filters.command("ping", prefixes=HANDLER) & filters.user(OWNER_ID))
+@PyroX.on_message(filters.command("ping", prefixes=HANDLER) & filters.me)
 async def ping(_, message):
     start_time = time.time()
     await message.edit("✮ᑭｴƝG...✮")
