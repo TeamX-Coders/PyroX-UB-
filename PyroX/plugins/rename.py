@@ -1,5 +1,5 @@
-from Barath import barath, MODULE
-from config import OWNER_ID, HANDLER
+from PyroX import PyroX, MODULE
+from config import HANDLER
 import os
 from pyrogram import filters
 
@@ -17,7 +17,7 @@ async def FileType(message):
     else:
          return False
 
-@barath.on_message(filters.command("rename",prefixes=HANDLER) & filters.user(OWNER_ID))
+@PyroX.on_message(filters.command("rename",prefixes=HANDLER) & filters.me)
 async def rename(_, message):
     try:
        filename = message.text.split(None,1)[1]
@@ -32,7 +32,7 @@ async def rename(_, message):
     msg = await message.reply_text("⬇️ File has downloading...")
     path = await message.reply_to_message.download(file_name=filename)
     thumb_id = "./Barath/barath_img/IMG_20230503_093609_915.jpg"
-    await msg.edit_text("⬆️ File has uplaoding")
+    await msg.edit_text("⬆️ File has uplaoding take's 1min to 10min")
     await message.reply_document(document=path, thumb=thumb_id)
     await msg.delete()
     os.remove(path)
