@@ -86,4 +86,51 @@ async def alive_inline(_, inline_query):
     )
 
 
- 
+
+@PyroX.on_message(filters.command("help", prefixes=".") & filters.me)
+async def get_helpdex(_, message):
+    user_id = (await GET_INFO.PyroX()).id
+    if not message.from_user.id == user_id:
+        return
+
+    try:
+        await PyroX.send_edit(". . .", text_type=["mono"])
+        result = await PyroX.get_inline_bot_results(
+            PyroX.bot.username,
+            "help"
+        )
+
+        if result:
+            await message.delete()
+            info = await PyroX.send_inline_bot_result(
+                message.chat.id,
+                query_id=result.query_id,
+                result_id=result.results[0].id,
+                disable_notification=True,
+            )
+    except Exception as e:
+        print(f"Error: {e}")
+
+@PyroX.on_message(filters.command("alive", prefixes=".") & filters.me)
+async def alive_dex(_, message):
+    user_id = (await GET_INFO.PyroX()).id
+    if not message.from_user.id == user_id:
+        return
+
+    try:
+        await PyroX.send_edit(". . .", text_type=["mono"])
+        result = await PyroX.get_inline_bot_results(
+            PyroX.bot.username,
+            "alive"
+        )
+
+        if result:
+            await message.delete()
+            info = await PyroX.send_inline_bot_result(
+                message.chat.id,
+                query_id=result.query_id,
+                result_id=result.results[0].id,
+                disable_notification=True,
+            )
+    except Exception as e:
+        print(f"Error: {e}")
