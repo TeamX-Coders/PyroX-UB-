@@ -2,11 +2,11 @@ import asyncio
 import re
 import random
 import requests
-from Barath import barath, MODULE
+from PyroX import PyroX, MODULE
 from pyrogram import filters          
 from config import OWNER_ID, HANDLER
 
-@barath.on_message(filters.command("cat", prefixes=HANDLER) & filters.user(OWNER_ID))
+@PyroX.on_message(filters.command("cat", prefixes=HANDLER) & filters.me)
 async def cat(_, message):
     api = requests.get("https://api.thecatapi.com/v1/images/search").json()
     url = api[0]["url"]
@@ -15,7 +15,7 @@ async def cat(_, message):
     else:
         await message.reply_photo(url)
 
-@barath.on_message(filters.regex("baka") & filters.user(OWNER_ID))
+@PyroX.on_message(filters.regex("baka") & filters.me)
 async def baka(_, message):
     reply = message.reply_to_message
     api = requests.get("https://nekos.best/api/v2/baka").json()
@@ -31,7 +31,7 @@ async def baka(_, message):
     else:
         await message.reply_animation(url, caption="**• {}**\n**Baka!**".format(anime))
 
-@barath.on_message(filters.regex("hug") & filters.user(OWNER_ID))
+@PyroX.on_message(filters.regex("hug") & filters.me)
 async def hug(_, message):
     reply = message.reply_to_message
     api = requests.get("https://nekos.best/api/v2/hug").json()
@@ -47,7 +47,7 @@ async def hug(_, message):
     else:
         await message.reply_animation(url, caption="**• {}**\n**Hugs!**".format(anime))
 
-@barath.on_message(filters.command("in", prefixes=HANDLER) & filters.user(OWNER_ID))
+@PyroX.on_message(filters.command("in", prefixes=HANDLER) & filters.me)
 async def insult(_, message):
     reply = message.reply_to_message
     try:
@@ -65,7 +65,7 @@ async def insult(_, message):
     except Exception as e:
         await message.reply(f"Error: {e}")
 
-@barath.on_message(filters.command("ri", prefixes=HANDLER) & filters.user(OWNER_ID))
+@PyroX.on_message(filters.command("ri", prefixes=HANDLER) & filters.me)
 async def riddle(_, message):
     riddle = requests.get("https://riddles-api.vercel.app/random").json()
     question = riddle["riddle"]
@@ -74,7 +74,7 @@ async def riddle(_, message):
     await asyncio.sleep(20)
     await msg.edit(f"**• Riddle**:\n[ `{question}` ]\n\n• **Answer**: [ `{answer}` ]")
 
-@barath.on_message(filters.command("qu", prefixes=HANDLER) & filters.user(OWNER_ID))
+@PyroX.on_message(filters.command("qu", prefixes=HANDLER) & filters.user(OWNER_ID))
 async def quote(_, m):
     api = random.choice(requests.get("https://type.fit/api/quotes").json())
     string = api["text"]
@@ -83,7 +83,7 @@ async def quote(_, m):
         f"**Quotes**:\n`{string}`\n\n"
         f"   ~ **{author}**")
 
-@barath.on_message(filters.command("gt", prefixes=HANDLER) & filters.user(OWNER_ID))
+@PyroX.on_message(filters.command("gt", prefixes=HANDLER) & filters.me)
 async def google_it(_, message):
     file_id = "CAACAgUAAx0CXss_8QABB0iVY2ZDrB4YHzW6u1xRqKLuUX7b6sEAAhUAA-VDzTc4Ts7oOpk4nx4E"
     if message.reply_to_message:
