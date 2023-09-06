@@ -1,0 +1,31 @@
+
+
+{
+
+
+"name": "Barath",
+"description": "Telegram User Bot using Pyrogram formwork",
+"logo": "https://graph.org/file/d2378d747050e2963b95a.jpg",
+"repository": "https://gitHub.com/Vishal-1756/Barath",
+"env": {
+    "API_ID": {
+      "description": "api id get from my.telegram.org/apps",
+      "value": "",
+      "required": true
+    },
+    "API_HASH": {
+      "description": "api hash get from my.telegram.org/app",
+      "value": "",
+      "required": true
+    },
+    "SESSION": {
+      "description": "Pyrogram String Session",
+      "value": "",
+      "required": true
+    },
+    "TOKEN": {
+       "description": "create your bot in @botfather",
+       "value": "",
+       "required": true
+    }
+}}
