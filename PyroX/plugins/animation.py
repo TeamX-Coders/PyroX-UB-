@@ -3,7 +3,7 @@ import time
 from pyrogram import filters
 
 import config
-from Barath import barath, MODULE
+from PyroX import PyroX, MODULE
 
 hack_ani = [
     "`Hacking... 0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `\n\n\n  TERMINAL:\nDownloading Bruteforce-Telegram-0.1.tar.gz (9.3 kB)",
@@ -18,7 +18,7 @@ hack_ani = [
 ]
 
 
-@barath.on_message(
+@PyroX.on_message(
     filters.command("hack", prefixes=config.HANDLER) & filters.user(config.OWNER_ID)
 )
 async def hack(_, m):
@@ -53,7 +53,7 @@ love_ani = [
 ]
 
 
-@barath.on_message(
+@PyroX.on_message(
     filters.command("love", prefixes=config.HANDLER) & filters.user(config.OWNER_ID)
 )
 async def love(_, m):
