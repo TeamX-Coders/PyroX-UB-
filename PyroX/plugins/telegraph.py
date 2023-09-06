@@ -1,9 +1,9 @@
 from telegraph import upload_file
 from pyrogram import filters
-from Barath import barath, MODULE
-from config import HANDLER,  OWNER_ID
+from PyroX import PyroX, MODULE
+from config import HANDLER
 
-@barath.on_message(filters.command("tm", prefixes=HANDLER) & filters.user(OWNER_ID))
+@PyroX.on_message(filters.command("tm", prefixes=HANDLER) & filters.me)
 async def tm(_, message):
     await message.edit('processing...')
     reply_is = message.reply_to_message
