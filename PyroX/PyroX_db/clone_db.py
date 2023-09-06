@@ -1,4 +1,4 @@
-from Barath import DATABASE
+from PyroX import DATABASE
 
 db = DATABASE["CLONE"]
 
