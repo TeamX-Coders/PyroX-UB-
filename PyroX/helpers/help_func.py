@@ -1,7 +1,7 @@
 from pyrogram.types import Message, User
 from pyrogram import Client
-from Barath.barath_db.afk_db import get_afk_status
-from Barath.barath_db.pm_db import get_approved_users, pm_guard
+from PyroX.PyroX_db.afk_db import get_afk_status
+from PyroX.PyroX_db.pm_db import get_approved_users, pm_guard
 import shlex
 import requests 
 import datetime 
