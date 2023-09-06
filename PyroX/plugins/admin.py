@@ -1,10 +1,10 @@
 import config
 from pyrogram import filters, enums
 from pyrogram.types import ChatPrivileges
-from Barath import barath, MODULE
+from PyroX import PyroX, MODULE
 
 
-@barath.on_message(filters.command(["promote","fpromote"], prefixes=config.HANDLER) & filters.user(config.OWNER_ID))
+@PyroX.on_message(filters.command(["promote","fpromote"], prefixes=config.HANDLER) & filters.me)
 async def promote_member(_, message):
      if message.reply_to_message:
           user_id = message.reply_to_message.from_user.id
@@ -31,7 +31,7 @@ async def promote_member(_, message):
                      
 
 
-@barath.on_message(filters.command(["pin","unpin"], prefixes=config.HANDLER) & filters.user(config.OWNER_ID))
+@PyroX.on_message(filters.command(["pin","unpin"], prefixes=config.HANDLER) & filters.me)
 async def messages_pin(_, message):
       if not message.reply_to_message:
            return await message.edit("No Reply?")
@@ -55,7 +55,7 @@ async def messages_pin(_, message):
                return await message.edit(f"Successfully [UnPinned]({link})")
 
 
-@barath.on_message(filters.command("invite", prefixes=config.HANDLER) & filters.user(config.OWNER_ID))
+@PyroX.on_message(filters.command("invite", prefixes=config.HANDLER) & filters.me)
 async def invite_link(_, message):
      chat_id = message.chat.id
      try:
@@ -64,7 +64,7 @@ async def invite_link(_, message):
          return await message.edit(f"Somthing Wrong Happens:\n{e}")
      return await message.edit(str(link))
 
-@barath.on_message(filters.command("admins", prefixes=config.HANDLER) & filters.user(config.OWNER_ID))
+@PyroX.on_message(filters.command("admins", prefixes=config.HANDLER) & filters.me)
 async def admins_list(_, message):
      chat_id = message.chat.id
      title = message.chat.title
@@ -79,7 +79,7 @@ async def admins_list(_, message):
      return await msg.edit(mm)
      
 
-@barath.on_message(filters.command("del", prefixes=config.HANDLER) & filters.user(config.OWNER_ID))
+@PyroX.on_message(filters.command("del", prefixes=config.HANDLER) & filters.me)
 async def delete_message(_, message):
      if message.reply_to_message:
          try:
@@ -92,7 +92,7 @@ async def delete_message(_, message):
 
 
 
-@barath.on_message(filters.command("ban", prefixes=config.HANDLER) & filters.user(config.OWNER_ID))
+@PyroX.on_message(filters.command("ban", prefixes=config.HANDLER) & filters.me)
 async def ban_member(_, message):
     if message.reply_to_message:
          user_id = message.reply_to_message.from_user.id  
@@ -109,7 +109,7 @@ async def ban_member(_, message):
     return await message.edit(f"=> {name} Has Been Banned!")
 
 
-@barath.on_message(filters.command("unban", prefixes=config.HANDLER) & filters.user(config.OWNER_ID))
+@PyroX.on_message(filters.command("unban", prefixes=config.HANDLER) & filters.me)
 async def unban_member(_, message):
     if message.reply_to_message:
          user_id = message.reply_to_message.from_user.id  
@@ -126,7 +126,7 @@ async def unban_member(_, message):
     return await message.edit(f"=> {name} Has Been UnBanned!")
 
 
-@barath.on_message(filters.command("purge", prefixes=config.HANDLER) & filters.user(config.OWNER_ID))
+@PyroX.on_message(filters.command("purge", prefixes=config.HANDLER) & filters.me)
 async def purge(_, message):
     chat_id = message.chat.id
     if not message.reply_to_message:
