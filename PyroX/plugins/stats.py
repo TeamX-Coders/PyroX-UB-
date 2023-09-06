@@ -7,7 +7,7 @@ import config
 @PyroX.on_message(filters.command(["stats"], prefixes=config.HANDLER) & filters.me)
 async def dialogstats_handler(_, m: Message):
     try:
-        sent_message = await barath.send_message(m.chat.id, "Getting stats . . .", parse_mode=enums.ParseMode.MARKDOWN)
+        sent_message = await barath.send_message(m.chat.id, "Getting stats . . . take 1min", parse_mode=enums.ParseMode.MARKDOWN)
 
         bot = 0
         user = 0
@@ -22,7 +22,7 @@ async def dialogstats_handler(_, m: Message):
         **POWERED BY @sexy_dark**
         """
 
-        async for x in barath.get_dialogs():
+        async for x in PyroX.get_dialogs():
             if x.chat.type == ChatType.CHANNEL:
                 channel += 1
             if x.chat.type == ChatType.BOT:
@@ -31,7 +31,7 @@ async def dialogstats_handler(_, m: Message):
                 group += 1
             if x.chat.type == ChatType.PRIVATE:
                 user += 1
-
+        me = await PyroX.get_me()
         await sent_message.edit_text(stats_format.format(me, bot, user, group, channel), parse_mode=enums.ParseMode.MARKDOWN)
     except Exception as e:
         print(e)
