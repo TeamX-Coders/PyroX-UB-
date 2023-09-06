@@ -4,8 +4,8 @@ import io
 from subprocess import getoutput as run
 import traceback
 
-from Barath import barath
-from config import OWNER_ID, HANDLER 
+from PyroX import PyroX
+from config import HANDLER 
 from pyrogram import filters, enums
 from pyrogram.errors import MessageTooLong
 
@@ -21,7 +21,7 @@ async def aexec(code, client, message):
 
 
 
-@barath.on_message(filters.user(OWNER_ID) & filters.command("logs",prefixes=HANDLER))
+@PyroX.on_message(filters.me & filters.command("logs",prefixes=HANDLER))
 async def logs(_, message):
        run_logs = run("tail logs.txt")
        msg = await message.edit_text("Analyzing Logging...")
@@ -34,7 +34,7 @@ async def logs(_, message):
        return await msg.delete()
 
 
-@barath.on_message(filters.user(OWNER_ID) & filters.command("sh",prefixes=HANDLER))
+@PyroX.on_message(filters.me & filters.command("sh",prefixes=HANDLER))
 async def sh(_, message):
 
     await message.edit("Analyzing Code...")
@@ -65,7 +65,7 @@ async def sh(_, message):
                return await message.delete()
 
     
-@barath.on_message(filters.user(OWNER_ID) & filters.command("e",prefixes=HANDLER))
+@PyroX.on_message(filters.me & filters.command("e",prefixes=HANDLER))
 async def eval(client, message):
 
     msg = await message.edit_text("Analyzing Code...")
