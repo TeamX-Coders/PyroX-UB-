@@ -5,7 +5,7 @@ from pyrogram import Client
 from pymongo import MongoClient
 import motor.motor_asyncio
 
-FORMAT = "[Barath]: %(message)s"
+FORMAT = "[PyroX]: %(message)s"
 
 logging.basicConfig(level=logging.INFO, handlers=[logging.FileHandler('logs.txt'),
                                                     logging.StreamHandler()], format=FORMAT)
@@ -39,7 +39,7 @@ def get_readable_time(seconds: int) -> str:
 logger = logging.getLogger(__name__)
 
 # Set up database connection
-DB_URL = "mongodb+srv://personaluse:ImCrAzYbOy@personaluse.ounsjuz.mongodb.net/?retryWrites=true&w=majority"
+DB_URL = os.getenv("MONGO_URI")
 DB = MongoClient(DB_URL)
 DATABASE = DB.MAIN
 
@@ -53,15 +53,15 @@ TOKEN = os.getenv("TOKEN")
 
 
 # PYROGRAM USER CLIENT 
-barath = Client(name="Barath", session_string=SESSION, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Barath"))
+PyroX = Client(name="PyroX", session_string=SESSION, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Barath"))
 
 #PYROGRAM BOT CLIENT
-bot = Client(name="BarathBot", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Barath"))
+bot = Client(name="PyroXbot", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Barath"))
 
 
 
 class INFO:
-   def barath():
+   def PyroX():
       info = barath.get_me()
       return info   
      
