@@ -1,11 +1,11 @@
 import config 
 import requests
 
-from Barath import barath 
-from Barath import MODULE, bot, INFO as GET_INFO
-from Barath.helpers.help_func import spacebin
+from PyroX import PyroX 
+from PyroX import MODULE, bot, INFO as GET_INFO
+from PyroX.helpers.help_func import spacebin
 from pyrogram import filters
-from Barath.plugins.alive import alive
+from PyroX.plugins.alive import alive
 from pyrogram.types import (
     InlineQueryResultArticle,
     InputTextMessageContent,
@@ -18,7 +18,7 @@ from pyrogram.types import (
 
 @bot.on_inline_query(filters.regex("help"))
 async def help_cmds(_, inline_query):
-    user_id = (await GET_INFO.barath()).id
+    user_id = (await GET_INFO.PyroX()).id
     if not inline_query.from_user.id == user_id:
         return
 
@@ -61,7 +61,7 @@ async def help_cmds(_, inline_query):
 
 @bot.on_inline_query(filters.regex("test"))
 async def test(_, inline_query):
-    user_id = (await GET_INFO.barath()).id
+    user_id = (await GET_INFO.PyroX()).id
     if not inline_query.from_user.id == user_id:
        return 
     string = inline_query
@@ -78,7 +78,7 @@ async def test(_, inline_query):
 
 @bot.on_inline_query(filters.regex("alive"))
 async def alive_inline(_, inline_query):
-    user_id = (await GET_INFO.barath()).id
+    user_id = (await GET_INFO.PyroX()).id
     if not inline_query.from_user.id == user_id:
         return
      
