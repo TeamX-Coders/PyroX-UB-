@@ -2,7 +2,7 @@ import requests
 import config, os
 import datetime
 
-from Barath import barath, MODULE
+from PyroX import PyroX, MODULE
 from pyrogram import filters
 
 async def convert_to_datetime(timestamp): # Unix timestamp
@@ -29,7 +29,7 @@ async def spacebin(text: str):
 """
     return string
 
-@barath.on_message(filters.command("paste", config.HANDLER) & filters.user(config.OWNER_ID))
+@PyroX.on_message(filters.command("paste", config.HANDLER) & filters.me)
 async def paste(_, message):
     # share your codes on https://spacebin.in
     if not message.reply_to_message:
