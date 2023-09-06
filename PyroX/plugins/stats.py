@@ -1,10 +1,10 @@
 from pyrogram import filters, enums
-from Barath import barath, MODULE
+from PyroX import PyroX, MODULE
 from pyrogram.types import Message
 from pyrogram.enums import ChatType
 import config
 
-@barath.on_message(filters.command(["stats"], prefixes=config.HANDLER) & filters.user(config.OWNER_ID))
+@PyroX.on_message(filters.command(["stats"], prefixes=config.HANDLER) & filters.me)
 async def dialogstats_handler(_, m: Message):
     try:
         sent_message = await barath.send_message(m.chat.id, "Getting stats . . .", parse_mode=enums.ParseMode.MARKDOWN)
@@ -19,7 +19,7 @@ async def dialogstats_handler(_, m: Message):
         👨 • **USERS:** {}
         🛡️ • **GROUPS:** {}
         ⚙️ • **CHANNELS:** {}
-        **POWERED BY @DAANAV_ASURA**
+        **POWERED BY @sexy_dark**
         """
 
         async for x in barath.get_dialogs():
@@ -32,10 +32,10 @@ async def dialogstats_handler(_, m: Message):
             if x.chat.type == ChatType.PRIVATE:
                 user += 1
 
-        await sent_message.edit_text(stats_format.format(m.from_user.mention, bot, user, group, channel), parse_mode=enums.ParseMode.MARKDOWN)
+        await sent_message.edit_text(stats_format.format(me, bot, user, group, channel), parse_mode=enums.ParseMode.MARKDOWN)
     except Exception as e:
         print(e)
-        await barath.send_message(m.chat.id, "Something went wrong in the stats command!")
+        await PyroX.send_message(m.chat.id, "Something went wrong in the stats command!")
 
 __mod_name__ = "STATS"  
     
