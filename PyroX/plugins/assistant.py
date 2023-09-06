@@ -8,8 +8,8 @@ import config, strings
 import asyncio
 
 from pyrogram import filters, enums
-from Barath import bot, INFO , barath
-from Barath.helpers.help_func import emoji_convert
+from PyroX import bot, INFO , PyroX
+from PyroX.helpers.help_func import emoji_convert
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import MessageTooLong
 
@@ -26,7 +26,7 @@ async def aexec(code, client, message):
 @bot.on_message(filters.command("start") & filters.private)
 async def start(_, message):
      user_id = message.from_user.id
-     info = await INFO.barath()
+     info = await INFO.PyroX()
      botlive = await emoji_convert(bot.is_connected)
      applive = await emoji_convert(barath.is_connected)
      name = info.first_name
