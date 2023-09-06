@@ -1,17 +1,16 @@
 from pyrogram import filters
 import asyncio
 from pyrogram.methods import messages
-from Barath import barath 
-from Barath.helpers.help_func import get_arg, denied_users
-import Barath.barath_db.pm_db as Zectdb
-from config import HANDLER, OWNER_ID
+from PyroX import PyroX 
+from PyroX.helpers.help_func import get_arg, denied_users
+import PyroX.PyroX_db.pm_db as Zectdb
 
 FLOOD_CTRL = 0
 ALLOWED = []
 USERS_AND_WARNS = {}
 
 
-@barath.on_message(filters.command("pmguard", HANDLER) & filters.me)
+@PyroX.on_message(filters.command("pmguard", HANDLER) & filters.me)
 async def pmguard(client, message):
     arg = get_arg(message)
     if not arg:
@@ -25,7 +24,7 @@ async def pmguard(client, message):
         await message.edit("**PM Guard Activated**")
 
 
-@barath.on_message(filters.command("setlimit", HANDLER) & filters.me)
+@PyroX.on_message(filters.command("setlimit", HANDLER) & filters.me)
 async def pmguard(client, message):
     arg = get_arg(message)
     if not arg:
@@ -35,7 +34,7 @@ async def pmguard(client, message):
     await message.edit(f"**Limit set to {arg}**")
 
 
-@barath.on_message(filters.command("setpmmsg", HANDLER) & filters.me)
+@PyroX.on_message(filters.command("setpmmsg", HANDLER) & filters.me)
 async def setpmmsg(client, message):
     arg = get_arg(message)
     if not arg:
@@ -49,7 +48,7 @@ async def setpmmsg(client, message):
     await message.edit("**Custom anti-pm message set**")
 
 
-@barath.on_message(filters.command("setblockmsg", HANDLER) & filters.me)
+@PyroX.on_message(filters.command("setblockmsg", HANDLER) & filters.me)
 async def setpmmsg(client, message):
     arg = get_arg(message)
     if not arg:
@@ -63,7 +62,7 @@ async def setpmmsg(client, message):
     await message.edit("**Custom block message set**")
 
 
-@barath.on_message(filters.command("allow", HANDLER) & filters.me & filters.private)
+@PyroX.on_message(filters.command("a", HANDLER) & filters.me & filters.private)
 async def allow(client, message):
     chat_id = message.chat.id
     pmpermit, pm_message, limit, block_message = await Zectdb.get_pm_settings()
@@ -76,14 +75,14 @@ async def allow(client, message):
     USERS_AND_WARNS.update({chat_id: 0})
 
 
-@barath.on_message(filters.command("deny", HANDLER) & filters.me & filters.private)
+@PyroX.on_message(filters.command("deny", HANDLER) & filters.me & filters.private)
 async def deny(client, message):
     chat_id = message.chat.id
     await Zectdb.deny_user(chat_id)
     await message.edit(f"**I have denied [you](tg://user?id={chat_id}) to PM me.**")
 
 
-@barath.on_message(
+@PyroX.on_message(
     filters.private
     & filters.create(denied_users)
     & filters.incoming
@@ -111,5 +110,5 @@ async def reply_pm(client, message):
         await message.reply(pm_message, disable_web_page_preview=True)
         return
     await message.reply(block_message, disable_web_page_preview=True)
-    await barath.block_user(message.chat.id)
+    await PyroX.block_user(message.chat.id)
     USERS_AND_WARNS.update({user: 0})
