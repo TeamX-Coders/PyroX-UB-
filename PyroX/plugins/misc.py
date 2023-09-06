@@ -54,12 +54,24 @@ async def translate(_, message) -> None:
     await reply_msg.reply_text(reply)
     return 
 
+@PyroX.on_message(filters.command("webss", prefix) & filters.me)
+async def webshot(_, message):
+    try:
+        user_link = message.command[1]
+        await message.delete()
+        full_link = f"https://webshot.deam.io/{user_link}/?delay=2000"
+        await PyroX.send_document(message.chat.id, full_link, caption=f"{user_link}")
+    except Exception as e:
+        await message.edit(format_exc(e))
+
+            
 
 __mod_name__ = "MISC"  
     
 __help__ = """  
 - tr: translate any text 
 - ud: find wrd in disctinory
+- webshot: webss url
 """  
     
     
