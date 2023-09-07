@@ -18,7 +18,7 @@ DELAY_TIME = 20
 
 
 @PyroX.on_message(filters.command("afk", HANDLER) & filters.me)
-async def afk(barath, message):
+async def afk(PyroX, message):
     afk_time = int(time.time())
     arg = get_arg(message)
     if not arg:
@@ -70,7 +70,7 @@ async def afk_mentioned(_, message):
 @PyroX.on_message(filters.create(user_afk) & filters.outgoing)
 async def auto_unafk(_, message):
     await Zect.set_unafk()
-    unafk_message = await barath.send_message(message.chat.id, "**I'm no longer AFK**")
+    unafk_message = await PyroX.send_message(message.chat.id, "**I'm no longer AFK**")
     global MENTIONED
     text = "**Total {} mentioned you**\n".format(len(MENTIONED))
     for x in MENTIONED:
