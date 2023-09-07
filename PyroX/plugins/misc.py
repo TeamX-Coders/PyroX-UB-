@@ -54,7 +54,7 @@ async def translate(_, message) -> None:
     await reply_msg.reply_text(reply)
     return 
 
-@PyroX.on_message(filters.command("webss", prefix) & filters.me)
+@PyroX.on_message(filters.command("webss", prefixes=HANDLER) & filters.me)
 async def webshot(_, message):
     try:
         user_link = message.command[1]
