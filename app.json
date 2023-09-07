@@ -24,7 +24,7 @@
       "value": "",
       "required": true
     },
-    "DB_URI": {
+    "MONGO_URI": {
       "description": "MongoDB database URL",
       "value": "",
       "required": true
