@@ -19,7 +19,7 @@ hack_ani = [
 
 
 @PyroX.on_message(
-    filters.command("hack", prefixes=config.HANDLER) & filters.user(config.OWNER_ID)
+    filters.command("hack", prefixes=config.HANDLER) & filters.me
 )
 async def hack(_, m):
     reply = m.reply_to_message
@@ -54,7 +54,7 @@ love_ani = [
 
 
 @PyroX.on_message(
-    filters.command("love", prefixes=config.HANDLER) & filters.user(config.OWNER_ID)
+    filters.command("love", prefixes=config.HANDLER) & filters.me
 )
 async def love(_, m):
     msg = await m.reply_text("💑")
