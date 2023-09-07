@@ -94,7 +94,7 @@ async def get_helpdex(_, message):
         return
 
     try:
-        await message.edit(". . .", text_type=["mono"])
+        await message.edit("`. . .`",)
         result = await PyroX.get_inline_bot_results(
             PyroX.bot.username,
             "help"
@@ -118,7 +118,7 @@ async def alive_dex(_, message):
         return
 
     try:
-        await message.edit(". . .", text_type=["mono"])
+        await message.edit("`. . .`")
         result = await PyroX.get_inline_bot_results(
             PyroX.bot.username,
             "alive"
