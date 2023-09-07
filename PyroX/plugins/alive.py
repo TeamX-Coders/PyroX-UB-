@@ -8,7 +8,7 @@ from PyroX import bot, MODULE
 
 async def alive():
     katsuki = "3.01"
-    user = await barath.get_me()
+    user = await PyroX.get_me()
     name = user.first_name
     username = user.username
     user_profile_link = f"https://t.me/{username}" if username else ""
