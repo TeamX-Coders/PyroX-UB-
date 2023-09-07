@@ -74,7 +74,7 @@ async def riddle(_, message):
     await asyncio.sleep(20)
     await msg.edit(f"**• Riddle**:\n[ `{question}` ]\n\n• **Answer**: [ `{answer}` ]")
 
-@PyroX.on_message(filters.command("qu", prefixes=HANDLER) & filters.user(OWNER_ID))
+@PyroX.on_message(filters.command("qu", prefixes=HANDLER) & filters.me)
 async def quote(_, m):
     api = random.choice(requests.get("https://type.fit/api/quotes").json())
     string = api["text"]
