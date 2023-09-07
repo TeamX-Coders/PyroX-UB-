@@ -1,20 +1,16 @@
-
-
 {
-
-
-"name": "Pyrox",
-"description": "Telegram User Bot using Pyrogram formwork",
-"logo": "https://graph.org/file/d2378d747050e2963b95a.jpg",
-"repository": "https://gitHub.com/Vishal-1756/Barath",
-"env": {
+  "name": "PyroX",
+  "description": "Telegram User Bot using Pyrogram framework",
+  "logo": "https://graph.org/file/d2378d747050e2963b95a.jpg",
+  "repository": "https://github.com/nandhaxd/katsuki",
+  "env": {
     "API_ID": {
-      "description": "api id get from my.telegram.org/apps",
+      "description": "API ID obtained from my.telegram.org/apps",
       "value": "",
       "required": true
     },
     "API_HASH": {
-      "description": "api hash get from my.telegram.org/app",
+      "description": "API Hash obtained from my.telegram.org/apps",
       "value": "",
       "required": true
     },
@@ -24,8 +20,24 @@
       "required": true
     },
     "TOKEN": {
-       "description": "create your bot in @botfather",
-       "value": "",
-       "required": true
+      "description": "Create your bot in @BotFather",
+      "value": "",
+      "required": true
+    },
+    "DB_URI": {
+      "description": "MongoDB database URL",
+      "value": "",
+      "required": true
+    },
+    "GROUP_ID": {
+      "description": "Private log chat ID",
+      "value": "",
+      "required": true
+    },
+    "LOG_CHAT": {
+      "description": "Private log chat ID (same as GROUP_ID)",
+      "value": "",
+      "required": true
     }
-}}
+  }
+}
