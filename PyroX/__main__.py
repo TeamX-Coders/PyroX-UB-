@@ -13,7 +13,7 @@ async def run_clients():
       await bot.send_message(
            chat_id=config.GROUP_ID,
            text=strings.RESTART_TEXT1.format(date=zone["date"], time=zone["time"]))
-      await barath.send_message(
+      await PyroX.send_message(
            chat_id=config.GROUP_ID,
            text=strings.RESTART_TEXT2.format(date=zone["date"], time=zone["time"]))
 
