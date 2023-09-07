@@ -62,7 +62,7 @@ bot = Client(name="PyroXbot", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH,
 
 class INFO:
    def PyroX():
-      info = barath.get_me()
+      info = PyroX.get_me()
       return info   
      
    def bot():
