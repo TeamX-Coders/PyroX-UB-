@@ -53,10 +53,10 @@ TOKEN = os.getenv("TOKEN")
 
 
 # PYROGRAM USER CLIENT 
-PyroX = Client(name="PyroX", session_string=SESSION, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Barath"))
+PyroX = Client(name="PyroX", session_string=SESSION, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="PyroX"))
 
 #PYROGRAM BOT CLIENT
-bot = Client(name="PyroXbot", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="Barath"))
+bot = Client(name="PyroXbot", bot_token=TOKEN, api_id=API_ID, api_hash=API_HASH, plugins=dict(root="PyroX"))
 
 
 
