@@ -104,7 +104,7 @@ async def reply_pm(client, message):
         else:
             FLOOD_CTRL = 0
             return
-        async for message in barath.search_messages(
+        async for message in PyroX.search_messages(
             chat_id=message.chat.id, query=pm_message, limit=1, from_user="me"
         ):
             await message.delete()
