@@ -4,7 +4,7 @@ import random
 import requests
 from PyroX import PyroX, MODULE
 from pyrogram import filters          
-from config import OWNER_ID, HANDLER
+from config import HANDLER
 
 @PyroX.on_message(filters.command("cat", prefixes=HANDLER) & filters.me)
 async def cat(_, message):
