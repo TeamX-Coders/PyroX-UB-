@@ -1,7 +1,7 @@
 ![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=WELCOME+TO+PYROX+USERBOT!;POWERED+BY+TEAM-X-NETWORK!;EXPLORE+THE+MAGIC+OF+PYROGRAM!;ENJOY+THE+ULTIMATE+USERBOT+EXPERIENCE!)
 
 <div align="center">
-  <img src="https://te.legra.ph/file/e1655469ddfb3759ebcce.jpg" alt="PyroX Userbot" width="300">
+  <img src="https://te.legra.ph/file/e1655469ddfb3759ebcce.jpg" alt="PyroX Userbot" width="500">
 </div>
 
 # PyroX - Your Ultimate Pyrogram Userbot
@@ -26,7 +26,7 @@ PyroX is a powerful and versatile userbot powered by the Team-X Network. It's yo
 PyroX isn't just powerful; it's beautiful too! Customize your userbot with elegant themes and personalized settings.
 
 <div align="center">
-  <img src="https://your-image-url.com/your-theme-screenshot.png" alt="PyroX Userbot Theme" width="400">
+  <img src="https://te.legra.ph/file/13b6f020473d1cb1a29f6.jpg" alt="Thanks to Team-x" width="500">
 </div>
 
 ## Connect with Us
