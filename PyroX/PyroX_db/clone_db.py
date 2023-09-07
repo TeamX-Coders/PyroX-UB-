@@ -18,9 +18,9 @@ async def store_profile(user_id: int, profile: str, first_name: str, bio: str):
 
 async def get_profile(user_id: int):
      id = {"user_id": user_id}
-     barath = db.find_one(id)
-     if barath:
-          return barath
+     PyroX = db.find_one(id)
+     if PyroX:
+          return PyroX
      return False
           
     
