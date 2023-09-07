@@ -15,7 +15,7 @@ async def cat(_, message):
     else:
         await message.reply_photo(url)
 
-@PyroX.on_message(filters.regex("baka") & filters.me)
+@PyroX.on_message(filters.command("baka") & filters.me)
 async def baka(_, message):
     reply = message.reply_to_message
     api = requests.get("https://nekos.best/api/v2/baka").json()
@@ -31,7 +31,7 @@ async def baka(_, message):
     else:
         await message.reply_animation(url, caption="**• {}**\n**Baka!**".format(anime))
 
-@PyroX.on_message(filters.regex("hug") & filters.me)
+@PyroX.on_message(filters.command("hug") & filters.me)
 async def hug(_, message):
     reply = message.reply_to_message
     api = requests.get("https://nekos.best/api/v2/hug").json()
