@@ -1,7 +1,7 @@
-from PyroX import cli
+from Barath import cli
 import asyncio
 
-collection = cli["Barath"]["afk"]
+collection = cli["PyroX"]["afk"]
 
 
 async def set_afk(afk_status, afk_since, reason):
