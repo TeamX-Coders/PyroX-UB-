@@ -12,9 +12,20 @@ async def help_back(_, query):
    user_id = (await GET_INFO.PyroX()).id
    if not query.from_user.id == int(user_id):
        return await query.answer("😤 You aren't my master")
-   buttons = [[InlineKeyboardButton(x['module'], callback_data=f"help:{x['module']}")] for x in MODULE]
+   buttons = []
+    for x in MODULE:
+        buttons.append(
+            InlineKeyboardButton(x['module'], callback_data=f"help:{x['module']}")
+        )
+
+    # Organize buttons in two columns
+    columns = 2
+    buttons_in_columns = [buttons[i:i + columns] for i in range(0, len(buttons), columns)]
+
+    keyboard = InlineKeyboardMarkup(buttons_in_columns)
+
    return await bot.edit_inline_text(
-       inline_message_id=query.inline_message_id, text="[`HELP COMMANDS`]", reply_markup=InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.MARKDOWN)
+       inline_message_id=query.inline_message_id, text="[`HELP COMMANDS`]", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=enums.ParseMode.MARKDOWN)
        
      
 
