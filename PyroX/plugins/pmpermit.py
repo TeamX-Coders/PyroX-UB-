@@ -4,6 +4,7 @@ from pyrogram.methods import messages
 from PyroX import PyroX 
 from PyroX.helpers.help_func import get_arg, denied_users
 import PyroX.PyroX_db.pm_db as Zectdb
+from config import HANDLER
 
 FLOOD_CTRL = 0
 ALLOWED = []
