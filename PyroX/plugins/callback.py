@@ -9,10 +9,11 @@ InlineKeyboardMarkup, InlineKeyboardButton )
 
 @bot.on_callback_query(filters.regex("help_back"))
 async def help_back(_, query):
-   user_id = (await GET_INFO.PyroX()).id
-   if not query.from_user.id == int(user_id):
-       return await query.answer("😤 You aren't my master")
-   buttons = []
+    user_id = (await GET_INFO.PyroX()).id
+    if not query.from_user.id == int(user_id):
+        return await query.answer("😤 You aren't my master")
+    
+    buttons = []
     for x in MODULE:
         buttons.append(
             InlineKeyboardButton(x['module'], callback_data=f"help:{x['module']}")
@@ -24,9 +25,13 @@ async def help_back(_, query):
 
     keyboard = InlineKeyboardMarkup(buttons_in_columns)
 
-   return await bot.edit_inline_text(
-       inline_message_id=query.inline_message_id, text="[`HELP COMMANDS`]", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=enums.ParseMode.MARKDOWN)
-       
+    return await bot.edit_inline_text(
+        inline_message_id=query.inline_message_id, 
+        text="[`HELP COMMANDS`]", 
+        reply_markup=InlineKeyboardMarkup(keyboard), 
+        parse_mode=enums.ParseMode.MARKDOWN
+    )
+
      
 
 @bot.on_callback_query(filters.regex('^help'))
