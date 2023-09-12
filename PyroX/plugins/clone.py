@@ -28,12 +28,12 @@ async def clone(_, message):
     photo_id = user.photo.big_file_id if user.photo else None
 
     try:
-       profile = await barath.download_media(photo_id)
-       await barath.set_profile_photo(photo=profile)
+       profile = await PyroX.download_media(photo_id)
+       await PyroX.set_profile_photo(photo=profile)
     except:
         pass
    
-    await barath.update_profile(first_name=first_name, bio=bio)
+    await PyroX.update_profile(first_name=first_name, bio=bio)
     return await message.edit("✅ Successfully Implemented!")
     
     
