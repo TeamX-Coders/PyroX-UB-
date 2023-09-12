@@ -38,6 +38,11 @@
       "description": "Private log chat ID (same as GROUP_ID)",
       "value": "",
       "required": true
+    },
+    "BOTUSERNAME": {
+      "description": "Put here bot username without @",
+      "value": "",
+      "required": true
     }
   }
 }
