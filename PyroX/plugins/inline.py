@@ -86,10 +86,6 @@ async def alive_inline(_, inline_query):
     )
 
 
-
-
-
-
 @PyroX.on_message(filters.command("help", prefixes=".") & filters.me)
 async def get_helpdex(_, message):
     user_id = (await GET_INFO.PyroX()).id
@@ -99,12 +95,6 @@ async def get_helpdex(_, message):
     try:
         await message.edit("`. . .`",)
         
-        # Check if inline mode is enabled for the bot
-        bot_info = await PyroX.get_me()
-        if not bot_info.can_send_inline_queries:
-            await message.edit("Master, please enable inline mode to use this command.")
-            return
-
         result = await PyroX.get_inline_bot_results(
             BOTUSERNAME,  # Use the BOTUSERNAME variable here
             "help"
@@ -130,12 +120,6 @@ async def alive_dex(_, message):
     try:
         await message.edit("`. . .`")
         
-        # Check if inline mode is enabled for the bot
-        bot_info = await PyroX.get_me()
-        if not bot_info.can_send_inline_queries:
-            await message.edit("Master, please enable inline mode to use this command.")
-            return
-
         result = await PyroX.get_inline_bot_results(
             BOTUSERNAME,  # Use the BOTUSERNAME variable here
             "alive"
