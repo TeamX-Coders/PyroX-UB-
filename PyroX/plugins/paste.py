@@ -55,7 +55,7 @@ async def paste(_, message):
 
     elif (message.reply_to_message.document and bool(message.reply_to_message.document.mime_type.startswith("text/"))):
         try:
-            path = await barath.download_media(message.reply_to_message)
+            path = await PyroX.download_media(message.reply_to_message)
             with open(path, "r") as file:
                 text = file.read()
             os.remove(path)
