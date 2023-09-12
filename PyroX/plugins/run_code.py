@@ -25,7 +25,7 @@ async def aexec(code, client, message):
 async def logs(_, message):
        run_logs = run("tail logs.txt")
        msg = await message.edit_text("Analyzing Logging...")
-       thumb_id = "./Barath/barath_img/IMG_20230503_093609_915.jpg"
+       thumb_id = "PyroX/PyroX_img/IMG_20230906_201624_636.jpg"
        with io.BytesIO(str.encode(run_logs)) as logs:
             logs.name = "logs.txt"
             await message.reply_document(
