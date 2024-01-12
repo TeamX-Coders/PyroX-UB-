@@ -22,17 +22,26 @@ async def help_cmds(_, inline_query):
     if not inline_query.from_user.id == user_id:
         return
 
-    buttons = []
-    for x in MODULE:
-        buttons.append(
-            InlineKeyboardButton(x['module'], callback_data=f"help:{x['module']}")
-        )
+    buttons = [
+        [InlineKeyboardButton(x['module'], callback_data=f"help:{x['module']}")]
+        for x in MODULE
+    ]
 
-    # Organize buttons in two columns
-    columns = 2
-    buttons_in_columns = [buttons[i:i + columns] for i in range(0, len(buttons), columns)]
+    # Calculate the number of buttons per column
+    num_buttons = len(buttons)
+    num_buttons_per_column = num_buttons // 2
 
-    keyboard = InlineKeyboardMarkup(buttons_in_columns)
+    # Create two lists of buttons for each column
+    buttons_column1 = buttons[:num_buttons_per_column]
+    buttons_column2 = buttons[num_buttons_per_column:]
+
+    # Create InlineKeyboardMarkup with the custom layout
+    inline_keyboard = InlineKeyboardMarkup(
+        [
+            *buttons_column1,
+            *buttons_column2,
+        ]
+    )
 
     await bot.answer_inline_query(
         inline_query.id,
@@ -42,7 +51,7 @@ async def help_cmds(_, inline_query):
                 "🆘 HELP COMMANDS",
                 InputTextMessageContent(message_text="[`HELP COMMANDS`]"),
                 thumb_url="https://graph.org/file/b136511bda43b1d8db7d2.jpg",
-                reply_markup=keyboard
+                reply_markup=inline_keyboard
             )
         ]
     )
